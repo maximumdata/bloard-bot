@@ -57,7 +57,13 @@ bot.on('message', message => {
 
 		if (now < expirationTime) {
 			const timeLeft = (expirationTime - now) / 1000;
-			return message.author.send(`please wait ${timeLeft.toFixed(1)} more second(s) before using the \`${command.name}\` command.`);
+			try {
+				return message.author.send(`please wait ${timeLeft.toFixed(1)} more second(s) before using the \`${command.name}\` command.`);
+			} catch (error) {
+				console.log(`tried to DM ${message.author.name} and it failed`);
+				console.error(error);
+				return;
+			}
 		}
 	}
 
