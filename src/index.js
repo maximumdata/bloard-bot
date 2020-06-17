@@ -20,8 +20,8 @@ for (const file of commandFiles) {
 
 bot.once('ready', () => {
 	console.info(`logged in as ${bot.user.tag}`);
-	bot.user.setUsername('bloardman');
-	bot.user.setActivity('with my little penis');
+	//bot.user.setUsername('bloardman');
+	//bot.user.setActivity('with my little penis');
 });
 
 bot.on('message', message => {
