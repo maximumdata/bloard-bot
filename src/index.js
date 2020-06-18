@@ -1,6 +1,6 @@
 import discord from 'discord.js'
 import fs from 'fs';
-
+import markov from './markov';
 require('dotenv').config();
 
 process.on('unhandledRejection', error => console.error('Uncaught Promise Rejection', error));
@@ -18,13 +18,18 @@ for (const file of commandFiles) {
 }
 
 
-bot.once('ready', () => {
+bot.once('ready', async () => {
 	console.info(`logged in as ${bot.user.tag}`);
 	//bot.user.setUsername('bloardman');
 	//bot.user.setActivity('with my little penis');
 });
 
-bot.on('message', message => {
+bot.on('message', async (message) => {
+	if (message.content.includes('bloardman')) {
+		await markov(message);
+		return;
+	}
+
 	if (!message.content.startsWith(PREFIX) || message.author.bot) return;
 
 	const args = message.content.slice(PREFIX.length).split(/ +/);
