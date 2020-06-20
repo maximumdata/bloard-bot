@@ -19,14 +19,11 @@ module.exports = {
 	async execute(message, args) {
 		const mes = args[0];
 		const word = args[1].toLowerCase().split('');
-		console.log(mes);
-		console.log(word);
 		try {
 			const m = await message.channel.messages.fetch(mes);
 			for (let x = 0; x < word.length; x++) {
 				const letter = word[x];
 				const emoji = emojis[letter];
-				console.log(emoji);
 				await m.react(emoji);
 			}
 		} catch (error) {
