@@ -18,9 +18,11 @@ module.exports = {
 	usage: '<ID of message to react to> <word to spell out in reactions>',
 	async execute(message, args) {
 		const mes = args[0];
+		const what = mes.split('/');
+		const huh = what.length > 1 ? what[what.length - 1] : mes;
 		const word = args[1].toLowerCase().split('');
 		try {
-			const m = await message.channel.messages.fetch(mes);
+			const m = await message.channel.messages.fetch(huh);
 			for (let x = 0; x < word.length; x++) {
 				const letter = word[x];
 				const emoji = emojis[letter];
