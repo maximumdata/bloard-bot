@@ -25,7 +25,7 @@ bot.once('ready', async () => {
 });
 
 bot.on('message', async (message) => {
-	if (message.content.includes('bloardman')) {
+	if (message.content.toLowerCase().includes('bloardman')) {
 		await markov(message);
 		return;
 	}
