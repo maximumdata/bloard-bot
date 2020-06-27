@@ -1,6 +1,6 @@
 module.exports = {
 	name: 'kiki',
 	execute(message) {
-		message.channel.send('', { files: ['./imgs/kiki.jpg'] });
+		message.channel.send('give her a slice', { files: ['./imgs/kiki.jpg'] });
 	}
 };
