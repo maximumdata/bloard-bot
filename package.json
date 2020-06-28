@@ -1,33 +1,36 @@
 {
   "name": "bloard-bot",
-  "version": "0.0.1",
-  "description": "a discord bot for jerry chat",
+  "version": "0.1.0",
+  "description": "A discord bot for bloard chat",
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=prod babel-node src/index.js",
     "dev": "NODE_ENV=dev nodemon --exec babel-node src/index.js",
-    "test": "echo its working :)"
+    "test": "echo \"its working :)\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/maximumdata/bloard-bot.git"
   },
-  "keywords": [],
+  "keywords": [
+    "bloard",
+    "discordjs"
+  ],
   "author": "Mike Dettmer <mike@mikedettmer.com> (https://www.mikedettmer.com)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/maximumdata/bloard-bot/issues"
   },
-  "homepage": "https://github.com/maximumdata/bloard-bot",
+  "homepage": "https://github.com/maximumdata/bloard-bot#readme",
   "dependencies": {
     "discord.js": "^12.2.0",
     "dotenv": "^8.2.0",
     "markov-generator": "^1.2.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.0",
-    "@babel/node": "^7.8.0",
-    "@babel/preset-env": "^7.8.2",
-    "nodemon": "^2.0.2"
+    "@babel/core": "^7.10.3",
+    "@babel/node": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    "nodemon": "^2.0.4"
   }
 }
