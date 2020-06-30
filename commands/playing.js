@@ -1,9 +1,10 @@
-module.exports = {
+export default {
 	name: 'playing',
+	aliases: [],
 	description: 'Sets the Playing... status on the bot',
 	usage: '<string to set as playing>',
-	execute(message, args) {
+	execute: async function (message, args) {
 		const playing = args.join(' ');
-		message.client.user.setActivity(playing);
+		return await message.client.user.setActivity(playing);
 	}
 };

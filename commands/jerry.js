@@ -4,17 +4,18 @@ const pickRandom = (array) => {
 	return array[Math.floor(Math.random() * array.length)];
 }
 
-module.exports = {
+export default {
 	name: 'jerry',
 	aliases: ['jerru'],
-	execute(message) {
+	description: 'picks a random jerry image',
+	usage: '',
+	execute: async function (message) {
 		const jerries = fs.readdirSync('./jerries');
-//		const jerry = jerries[Math.floor(Math.random() * jerries.length)];
 		let jerry = pickRandom(jerries);
 		while (jerry == '.DS_Store') {
-			jerry = pickRandom(jerries);
+			jerry = pickRandom(jerry);
 		}
-		
-		message.channel.send('', { files: [`./jerries/${jerry}`] });
+
+		return await message.channel.send('', { files: [`./jerries/${jerry}`] });
 	}
 };

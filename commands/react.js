@@ -12,11 +12,12 @@ const emojis = {
     '!': '❗', '?': '❓',
 };
 
-module.exports = {
+export default {
 	name: 'react',
+	aliases: [],
 	description: 'Attempt to add reactions to a given message',
-	usage: '<ID of message to react to> <word to spell out in reactions>',
-	async execute(message, args) {
+	usage: '<Link or ID of message to react to> <word to spell out in reactions>',
+	execute: async function (message, args) {
 		const mes = args[0];
 		const what = mes.split('/');
 		const huh = what.length > 1 ? what[what.length - 1] : mes;
