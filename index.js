@@ -2,6 +2,7 @@ import fs from 'fs';
 import dotenv from 'dotenv';
 import discord from 'discord.js';
 import markov from './services/markov';
+import checkCooldown from './services/checkCooldown';
 import setUpCommands from './services/setUpCommands';
 
 // init and environment setup
@@ -9,7 +10,6 @@ dotenv.config();
 process.on('unhandledRejection', error => console.error('Uncaught Promise Rejection', error));
 
 const { TOKEN, PREFIX } = process.env;
-
 const client = new discord.Client();;
 const cooldowns = new discord.Collection();
 
@@ -40,37 +40,13 @@ client.on('message', async (message) => {
 		return message.channel.send(reply);
 	}
 
-	if (!cooldowns.has(command.name)) {
-		cooldowns.set(command.name, new discord.Collection());
-	}
-
-	const now = Date.now();
-	const timestamps = cooldowns.get(command.name);
-	const cooldownAmount = (command.cooldown || 3) * 1000;
-
-	if (timestamps.has(message.author.id)) {
-		const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
-
-		if (now < expirationTime) {
-			const timeLeft = (expirationTime - now) / 1000;
-			try {
-				return message.author.send(`please wait ${timeLeft.toFixed(1)} more second(s) before using the \`${command.name}\` command`);
-			} catch (e) {
-				console.log(`tried to DM ${message.author.name} and it failed`);
-				console.error(e);
-				return;
-			}
-		}
-	}
-
-	timestamps.set(message.author.id, now);
-	setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
+	if (checkCooldown(cooldowns, command, message)) return;
 
 	try {
-		command.execute(message, args);
+		await command.execute(message, args);
 	} catch (e) {
 		console.error(e);
-		message.reply('i made a poopy when i tried to run that command. tell mike he sucks');
+		await message.reply('i made a poopy when i tried to run that command. tell mike he sucks');
 	}
 });
 

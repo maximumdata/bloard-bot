@@ -10,10 +10,11 @@ export default async function setUpClient () {
 		const commands = new discord.Collection();
 
 		for (const file of commandFiles) {
-			if (file == 'template.js') return;
-			const filePath = path.join(__dirname, `../commands/${file}`);
-			const { default: command } = await import(filePath);
-			commands.set(command.name, command);
+			if (file !== 'template.js') {
+				const filePath = path.join(__dirname, `../commands/${file}`);
+				const { default: command } = await import(filePath);
+				commands.set(command.name, command);
+			}
 		}
 
 		return commands;
