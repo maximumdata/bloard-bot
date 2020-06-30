@@ -3,7 +3,7 @@ export default {
 	aliases: [],
 	description: '',
 	usage: '',
-	execute: async function () {
+	execute: async function (message, args) {
 	
 	}
 };

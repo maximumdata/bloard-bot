@@ -1,9 +1,9 @@
 export default {
 	name: 'thinkturt',
 	aliases: ['think'],
-	cooldown: 1000,
+	cooldown: 3,
 	description: 'Posts the thinkturt pic',
 	execute: async function (message) {
-		await message.channel.send('thinkturt', { files: ['./imgs/thinkturt.png'] });
+		await message.channel.send('', { files: ['./imgs/thinkturt.png'] });
 	}
 };
