@@ -16,7 +16,6 @@ const cooldowns = new discord.Collection();
 client.once('ready', async () => {
 	console.info(`logged in as ${client.user.tag}`);
 	client.commands = await setUpCommands();
-	console.log(client.commands.array());
 });
 
 client.on('message', async (message) => {

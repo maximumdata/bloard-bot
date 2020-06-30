@@ -1,3 +1,5 @@
+const { PREFIX: prefix } = process.env;
+
 export default {
 	name: 'help',
 	aliases: ['commands'],
