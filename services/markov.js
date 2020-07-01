@@ -15,7 +15,7 @@ export default async function markov(message, channels) {
 	
 	const markov = new MarkovGen({
 		input: noEmpties,
-		minLength: 5
+		minLength: 12
 	});
 
 	const result = markov.makeChain();
