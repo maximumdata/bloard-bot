@@ -9,7 +9,7 @@ import setUpCommands from './services/setUpCommands';
 dotenv.config();
 process.on('unhandledRejection', error => console.error('Uncaught Promise Rejection', error));
 
-const { TOKEN, PREFIX } = process.env;
+const { TOKEN, PREFIX, INFERKIT_KEY } = process.env;
 const client = new discord.Client();;
 const cooldowns = new discord.Collection();
 
@@ -20,7 +20,7 @@ client.once('ready', async () => {
 
 client.on('message', async (message) => {
 	if (message.content.toLowerCase().includes('bloardman')) {
-		return await markov(message, client.channels);
+		return await markov(message, client.channels, INFERKIT_KEY);
 	}
 
 	if (!message.content.startsWith(PREFIX) || message.author.bot) return;
