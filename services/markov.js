@@ -16,7 +16,7 @@ export default async function markov(message, channels) {
 	const markov = new MarkovGen({
 		input: noEmpties,
 		minLength: 12,
-		bannedTerminals: ['is', 'was', 'a', 'and', 'the', 'of', 'an']
+		bannedTerminals: ['is', 'was', 'a', 'and', 'the', 'of', 'an', 'to']
 	});
 
 	const result = markov.makeChain();
