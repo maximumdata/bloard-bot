@@ -16,10 +16,10 @@ export default function checkCooldown(cooldowns, command, message) {
 			const timeLeft = (expirationTime - now) / 1000;
 			try {
 				message.author.send(`please wait ${timeLeft.toFixed(1)} more second(s) before using the \`${command.name}\` command`);
-				return 1;
 			} catch (e) {
 				console.log(`tried to DM ${message.author.name} and it failed`);
 				console.error(e);
+			} finally {
 				return 1;
 			}
 		}

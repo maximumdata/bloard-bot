@@ -1,4 +1,3 @@
-import fs from 'fs';
 import dotenv from 'dotenv';
 import discord from 'discord.js';
 import markov from './services/markov';
