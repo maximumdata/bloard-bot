@@ -4,6 +4,8 @@ import markov from './services/markov';
 import checkCooldown from './services/checkCooldown';
 import setUpCommands from './services/setUpCommands';
 
+import react from './commands/react';
+
 // init and environment setup
 dotenv.config();
 process.on('unhandledRejection', error => console.error('Uncaught Promise Rejection', error));
