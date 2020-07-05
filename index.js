@@ -18,6 +18,10 @@ client.once('ready', async () => {
 });
 
 client.on('message', async (message) => {
+	if (message.content.toLowerCase().includes('nobra')) {
+		react.execute(message, [message.id, 'nobra']);
+	}
+
 	if (message.content.toLowerCase().includes('bloardman')) {
 		return await markov(message, client.channels);
 	}
