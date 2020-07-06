@@ -3,6 +3,7 @@ import discord from 'discord.js';
 import markov from './services/markov';
 import checkCooldown from './services/checkCooldown';
 import setUpCommands from './services/setUpCommands';
+import whoAreYou from './services/whoAreYou';
 
 import react from './commands/react';
 
@@ -25,6 +26,9 @@ client.on('message', async (message) => {
 	}
 
 	if (message.content.toLowerCase().includes('bloardman')) {
+		if (message.content.toLowerCase().includes('who are you') || message.content.toLowerCase().includes('what do you look like')) {
+			return await whoAreYou(message);
+		}
 		return await markov(message, client.channels);
 	}
 
