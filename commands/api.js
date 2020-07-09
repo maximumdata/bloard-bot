@@ -8,7 +8,7 @@ export default {
 	execute: async function (message) {
         const file = process.platform === 'darwin' ? '/Users/mike/butt.txt' : '/home/mike/butt.txt';
 		const buttTxt = fs.readFileSync(file, 'utf8');
-		const reply = `Today's password for https://bloardtotransformer.com is ${buttTxt.trim()}`
-		return await message.reply(reply);
+		await message.channel.send(`Here's today's password for http://bloardtotransformer.com:`);
+		return await message.channel.send(buttTxt.trim());
 	}
 };
