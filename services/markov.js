@@ -2,7 +2,7 @@ import MarkovGen from 'markov-generator';
 import fetchMessages from './fetchMessages';
 import filterMessageContent from './filterMessageContent';
 
-export default async function markov(message, channels) {
+export default async function markov(message) {
 	if (message.author.username === 'bloardman') return;
 	const textChannels = message.guild.channels.cache.filter(channel => channel.messages);
 	const arrayOfMessagesPerChannel = await Promise.all(textChannels.map(async (channel) => {
