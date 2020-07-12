@@ -27,12 +27,15 @@ client.on('message', async (message) => {
 	}
 
 	if (message.mentions.has(client.user)) {
+		message.channel.startTyping();
 		try {
 			const aiRes = await aiRequest(message, INFERKIT_KEY);
-			return await message.reply(aiRes);
+			await message.reply(aiRes);
 		} catch (error) {
 			react.execute(message, [message.id, 'markov']);
-			return await markov(message);
+			await markov(message);
+		} finally {
+			return await message.channel.stopTyping();
 		}
 	}
 
