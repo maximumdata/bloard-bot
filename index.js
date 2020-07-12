@@ -26,16 +26,28 @@ client.on('message', async (message) => {
 		react.execute(message, [message.id, 'nobra']);
 	}
 
-	if (message.mentions.has(client.user)) {
+	if (message.mentions.has(client.user) || message.content.toLowerCase().includes('bloardman')) {
 		message.channel.startTyping();
+
+		if (message.content.toLowerCase().includes('who are you') || message.content.toLowerCase().includes('what do you look like')) {
+			await whoAreYou(message);
+			return message.channel.stopTyping();
+		}
+
+		if (message.content.toLowerCase().split(' ').length <= 1) {
+			const mark = await markov(message);
+			message.content = mark;
+		}
+
 		try {
 			const aiRes = await aiRequest(message, INFERKIT_KEY);
 			await message.reply(aiRes);
 		} catch (error) {
 			react.execute(message, [message.id, 'markov']);
-			await markov(message);
+			const mark = await markov(message);
+			await message.reply(mark);
 		} finally {
-			return await message.channel.stopTyping();
+			return message.channel.stopTyping();
 		}
 	}
 

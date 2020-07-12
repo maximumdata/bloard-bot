@@ -19,7 +19,6 @@ export default async function markov(message) {
 		bannedTerminals: ['is', 'was', 'a', 'and', 'the', 'of', 'an', 'to']
 	});
 
-	const result = markov.makeChain();
-	return await message.reply(result);
+	return markov.makeChain();
 }
 
