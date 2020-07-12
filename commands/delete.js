@@ -16,8 +16,10 @@ export default {
 			}
 		} else {
 			const twoMessages = await message.channel.messages.fetch({ limit: 2 });
-			const m = twoMessages.last();
-			await m.delete();
+            const m = twoMessages.last();
+            if (m.author.username === 'bloardman') {
+                await m.delete();
+            }
 		}
 	}
 };
