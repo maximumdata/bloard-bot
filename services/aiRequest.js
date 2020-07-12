@@ -3,7 +3,7 @@ import axios from 'axios';
 export default async function aiRequest(message, INFERKIT_API_KEY) {
     const { content, author: { username } } = message;
     const INFERKIT_URL = 'https://api.inferkit.com/v1/models/standard/generate';
-    const conversationStructure = `bloardman: hello
+    const conversationStructure = `bloardman: i am bloardman
 ${username}: ${content}
 bloardman:`;
 
