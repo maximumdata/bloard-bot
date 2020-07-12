@@ -27,8 +27,8 @@ client.on('message', async (message) => {
 	}
 
 	if (message.mentions.has(client.user)) {
-		const aiRes = await aiRequest(message, INFERKIT_KEY);
 		try {
+			const aiRes = await aiRequest(message, INFERKIT_KEY);
 			return await message.reply(aiRes);
 		} catch (error) {
 			react.execute(message, [message.id, 'markov']);
