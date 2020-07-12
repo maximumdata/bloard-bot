@@ -25,6 +25,8 @@ client.on('message', async (message) => {
 	if (message.content.toLowerCase().includes('nobra')) {
 		react.execute(message, [message.id, 'nobra']);
 	}
+	
+	if (message.author.username === 'bloardman') return;
 
 	if (message.mentions.has(client.user) || message.content.toLowerCase().includes('bloardman')) {
 		message.channel.startTyping();
@@ -51,12 +53,12 @@ client.on('message', async (message) => {
 		}
 	}
 
-	if (message.content.toLowerCase().includes('bloardman')) {
-		if (message.content.toLowerCase().includes('who are you') || message.content.toLowerCase().includes('what do you look like')) {
-			return await whoAreYou(message);
-		}
-		return await markov(message);
-	}
+	// if (message.content.toLowerCase().includes('bloardman')) {
+	// 	if (message.content.toLowerCase().includes('who are you') || message.content.toLowerCase().includes('what do you look like')) {
+	// 		return await whoAreYou(message);
+	// 	}
+	// 	return await markov(message);
+	// }
 
 	if (!message.content.startsWith(PREFIX) || message.author.bot) return;
 
