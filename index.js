@@ -7,6 +7,7 @@ import whoAreYou from './services/whoAreYou';
 import aiRequest from './services/aiRequest';
 
 import react from './commands/react';
+import doAKickflip from './services/doAKickflip';
 
 // init and environment setup
 dotenv.config();
@@ -33,6 +34,11 @@ client.on('message', async (message) => {
 
 		if (message.content.toLowerCase().includes('who are you') || message.content.toLowerCase().includes('what do you look like')) {
 			await whoAreYou(message);
+			return message.channel.stopTyping();
+		}
+
+		if (message.content.toLowerCase().includes('do a kickflip')) {
+			await doAKickflip(message);
 			return message.channel.stopTyping();
 		}
 

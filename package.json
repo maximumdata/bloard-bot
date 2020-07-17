@@ -24,8 +24,11 @@
   "homepage": "https://github.com/maximumdata/bloard-bot#readme",
   "dependencies": {
     "axios": "^0.19.2",
+    "canvas": "^2.6.1",
     "discord.js": "^12.2.0",
     "dotenv": "^8.2.0",
+    "gif-encoder-2": "^1.0.5",
+    "imgur-uploader": "^4.2.1",
     "markov-generator": "^1.2.3"
   },
   "devDependencies": {
