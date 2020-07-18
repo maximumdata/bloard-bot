@@ -3,7 +3,7 @@ export default {
 	aliases: [],
 	description: 'Sometimes bloardman says bad stuff. Use this to delete one of his messages.',
 	usage: '<link to bloardman message to delete>',
-	execute: async function (message, args) {
+	execute: async function (message, args, client) {
         if (args.length) {
 			const mes = args[0];
 			const what = mes.split('/');
@@ -15,11 +15,12 @@ export default {
 				console.error(error);
 			}
 		} else {
-			const twoMessages = await message.channel.messages.fetch({ limit: 2 });
-            const m = twoMessages.last();
-            if (m.author.username === 'bloardman') {
-                await m.delete();
-            }
+			const messages = await message.channel.messages.fetch({ limit: 20 })
+			const sorted = messages.sort((a, b) => b.createdAt > a.createdAt);
+			const mostRecent = sorted.find(element => element.author.username === 'bloardman');
+			if (mostRecent) {
+				await mostRecent.delete();
+			}
 		}
 	}
 };
