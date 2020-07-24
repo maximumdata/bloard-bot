@@ -75,9 +75,9 @@ client.on('message', async (message) => {
 			const aiRes = await aiRequest(message, INFERKIT_KEY);
 			await message.reply(aiRes);
 		} catch (error) {
-			react.execute(message, [message.id, 'ibroke']);
+			// react.execute(message, [message.id, 'ibroke']);
 			const mark = await markov(message);
-			await message.reply(mark);
+			await message.reply(`[AI failed]: ${mark}`);
 		} finally {
 			return message.channel.stopTyping();
 		}
