@@ -1,13 +1,13 @@
 import dotenv from 'dotenv';
 import discord from 'discord.js';
-import markov from './services/markov';
 import checkCooldown from './services/checkCooldown';
 import setUpCommands from './services/setUpCommands';
+import talkToRatbro from './services/talkToRatbro';
+import doAKickflip from './services/doAKickflip';
 import whoAreYou from './services/whoAreYou';
 import aiRequest from './services/aiRequest';
-
+import markov from './services/markov';
 import react from './commands/react';
-import doAKickflip from './services/doAKickflip';
 
 // init and environment setup
 dotenv.config();
@@ -31,6 +31,30 @@ client.on('message', async (message) => {
 
 	if (message.mentions.has(client.user) || message.content.toLowerCase().includes('bloardman')) {
 		message.channel.startTyping();
+
+		if (message.content.toLowerCase().includes('talk to ratbro')) {
+			message.channel.stopTyping();
+			try {
+				let ratbro;
+				try {
+					ratbro = await message.guild.members.fetch('720598812665839617');
+					if (ratbro.presence.status !== 'online') {
+						await message.reply('my best friend ratbro is offline ):');
+						return message.channel.stopTyping();
+					};
+				} catch (error) {
+					await message.reply('my best friend ratbro isn\'t in this server :(');
+					return message.channel.stopTyping();
+				}
+				const aiRatRes = await talkToRatbro(message, INFERKIT_KEY);
+				await message.channel.send(aiRatRes, { reply: ratbro });
+			} catch (error) {
+				console.error(error);
+				await message.reply('i broke :(');
+			} finally {
+				return message.channel.stopTyping();
+			}
+		}
 
 		if (message.content.toLowerCase().includes('who are you') || message.content.toLowerCase().includes('what do you look like')) {
 			await whoAreYou(message);
@@ -58,13 +82,6 @@ client.on('message', async (message) => {
 			return message.channel.stopTyping();
 		}
 	}
-
-	// if (message.content.toLowerCase().includes('bloardman')) {
-	// 	if (message.content.toLowerCase().includes('who are you') || message.content.toLowerCase().includes('what do you look like')) {
-	// 		return await whoAreYou(message);
-	// 	}
-	// 	return await markov(message);
-	// }
 
 	if (!message.content.startsWith(PREFIX) || message.author.bot) return;
 
