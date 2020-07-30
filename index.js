@@ -29,7 +29,7 @@ client.on('message', async (message) => {
 	
 	if (message.author.username === 'bloardman') return;
 
-	if (message.mentions.has(client.user) || message.content.toLowerCase().includes('bloardman')) {
+	if (message.mentions.has(client.user) || (message.content.toLowerCase().includes('bloardman') && !message.content.toLowerCase().includes('!post'))) {
 		message.channel.startTyping();
 
 		if (message.content.toLowerCase().includes('talk to ratbro')) {

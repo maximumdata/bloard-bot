@@ -11,9 +11,8 @@ export default async function bloardPost(message, args) {
 
   //figure out where to nav
   if (args.length) {
-    const fullUserWithSpaces = args.join(' ');
     //if command was entered with arguments, nav to that users page
-    await page.goto(`https://bloard.com/users/${fullUserWithSpaces}`)
+    await page.goto(`https://bloard.com/users/${args.join('-')}`)
 
     // validate user page exists
     try {
