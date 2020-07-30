@@ -1,4 +1,4 @@
-import bloardPost from '../services/BloardPost';
+import bloardPost from '../services/bloardPost';
 
 export default {
 	name: 'post',
