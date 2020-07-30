@@ -106,6 +106,7 @@ client.on('message', async (message) => {
 	} catch (e) {
 		console.error(e);
 		await message.reply('i made a poopy when i tried to run that command. tell mike he sucks');
+		message.channel.stopTyping();
 	}
 });
 
