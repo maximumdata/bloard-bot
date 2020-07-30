@@ -30,7 +30,8 @@
     "dotenv": "^8.2.0",
     "gif-encoder-2": "^1.0.5",
     "imgur-uploader": "^4.2.1",
-    "markov-generator": "^1.2.3"
+    "markov-generator": "^1.2.3",
+    "puppeteer": "^5.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.10.3",
