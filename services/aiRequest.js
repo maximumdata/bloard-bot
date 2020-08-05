@@ -21,7 +21,7 @@ bloardman:`;
         "prompt": {
             "text": conversationStructure
         },
-        "length": 300,
+        "length": 250,
         "startFromBeginning": true
     };
 
