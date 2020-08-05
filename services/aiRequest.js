@@ -27,5 +27,5 @@ bloardman:`;
 
     const { data: { data: result } } = await axios.post(INFERKIT_URL, data, { headers: { Authorization: `Bearer ${INFERKIT_API_KEY}` } });
     
-    return processResult(result.text);
+    return result.text.split('\n')[0];
 }
