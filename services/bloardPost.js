@@ -49,18 +49,19 @@ export default async function bloardPost(message, args) {
   await page.goto(`${url}?page=${randomPage}`);
 
 
-  let randomPost = await page.evaluate(() => {
+  url = await page.evaluate(() => {
     let randomPost = Math.floor(Math.random() * $('.bloard-post').length);
-    return $('.bloard-post')[randomPost].id.replace(/(post-)/, '')
+    // nav thru dom to fetch post url
+    return $($('.bloard-post')[randomPost]).find('a').last()[0].href
   })
 
   //nav to random post
-  await page.goto(`https://bloard.com/bloards/egg/topics/leg/posts/${randomPost}`)
+  await page.goto(url)
   //increase font size for grandpa
   await page.addStyleTag({content: '.bloard-post-content{font-size: 25px}'})
   //take screenshot
   const img = await page.screenshot({fullPage: true});
   //we out
   await browser.close();
-  return message.channel.send('', { files: [img] });
+  return message.channel.send(url, { files: [img] });
 }
