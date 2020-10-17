@@ -22,7 +22,8 @@ bloardman:`;
             "text": conversationStructure
         },
         "length": 200,
-        "startFromBeginning": true
+        "startFromBeginning": true,
+        "temperature": 2
     };
 
     const { data: { data: result } } = await axios.post(INFERKIT_URL, data, { headers: { Authorization: `Bearer ${INFERKIT_API_KEY}` } });
