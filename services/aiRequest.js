@@ -23,7 +23,7 @@ bloardman:`;
         },
         "length": 200,
         "startFromBeginning": true,
-        "temperature": 2
+        "topP": 1
     };
 
     const { data: { data: result } } = await axios.post(INFERKIT_URL, data, { headers: { Authorization: `Bearer ${INFERKIT_API_KEY}` } });
