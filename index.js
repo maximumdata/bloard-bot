@@ -15,7 +15,7 @@ process.on('unhandledRejection', error =>
   console.error('Uncaught Promise Rejection', error)
 );
 
-const { TOKEN, PREFIX, INFERKIT_KEY } = process.env;
+const { TOKEN, MSG_PREFIX, INFERKIT_KEY } = process.env;
 const client = new discord.Client();
 const cooldowns = new discord.Collection();
 
@@ -92,9 +92,8 @@ client.on('message', async message => {
     }
   }
 
-  if (!message.content.startsWith(PREFIX) || message.author.bot) return;
-
-  const args = message.content.slice(PREFIX.length).split(/ +/);
+  if (!message.content.startsWith(MSG_PREFIX) || message.author.bot) return;
+  const args = message.content.slice(MSG_PREFIX.length).split(/ +/);
   const commandName = args.shift().toLowerCase();
   const command =
     client.commands.get(commandName) ||
@@ -107,7 +106,7 @@ client.on('message', async message => {
   if (command.args && !args.length) {
     let reply = `You didn't provide any arguments, ${message.author}`;
     if (command.usage) {
-      reply += `\nThe proper usage would be \`${PREFIX}${command.name} ${command.usage}\``;
+      reply += `\nThe proper usage would be \`${MSG_PREFIX}${command.name} ${command.usage}\``;
     }
     return message.channel.send(reply);
   }
@@ -123,6 +122,7 @@ client.on('message', async message => {
     );
     message.channel.stopTyping();
   }
+  return message.channel.stopTyping();
 });
 
 client.login(TOKEN);
