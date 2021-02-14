@@ -1,26 +1,15 @@
 import axios from 'axios';
 import axiosRetry from 'axios-retry';
+import fetchMessages from './fetchMessages';
 
 axiosRetry(axios, { retryDelay: axiosRetry.exponentialDelay });
 
-function processResult(raw) {
-  const lines = raw.split('\n');
-  const bloardmanOnly = lines
-    .filter(line => line.toLowerCase().startsWith('bloardman:'))
-    .map(line =>
-      line.replace('bloardman:', '').replace('Bloardman:', '').trim()
-    );
-  return bloardmanOnly.join(' ');
-}
-
 export default async function aiRequest(message, INFERKIT_API_KEY) {
   if (message.author.username === 'bloardman') return;
-  const {
-    content,
-    member: { displayName }
-  } = message;
+
   const INFERKIT_URL = 'https://api.inferkit.com/v1/models/standard/generate';
-  const conversationStructure = `${displayName}: ${content}
+  const channelLog = await fetchMessages(message.channel);
+  const conversationStructure = `${channelLog}
 bloardman:`;
 
   const data = {
@@ -38,5 +27,13 @@ bloardman:`;
     headers: { Authorization: `Bearer ${INFERKIT_API_KEY}` }
   });
 
-  return result.text.split('\n')[0];
+  const resultArray = result.text.split('\n');
+  const filtered = resultArray.filter(str => str.length);
+  const replyString = filtered[0].trim();
+
+  if (replyString.length <= 1) {
+    return await aiRequest(message, INFERKIT_API_KEY);
+  }
+
+  return replyString;
 }
