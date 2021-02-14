@@ -6,7 +6,6 @@ import talkToRatbro from './services/talkToRatbro';
 import doAKickflip from './services/doAKickflip';
 import whoAreYou from './services/whoAreYou';
 import aiRequest from './services/aiRequest';
-import markov from './services/markov';
 import react from './commands/react';
 
 // init and environment setup
@@ -38,29 +37,29 @@ client.on('message', async message => {
   ) {
     message.channel.startTyping();
 
-    if (message.content.toLowerCase().includes('talk to ratbro')) {
-      message.channel.stopTyping();
-      try {
-        let ratbro;
-        try {
-          ratbro = await message.guild.members.fetch('720598812665839617');
-          if (ratbro.presence.status !== 'online') {
-            await message.reply('my best friend ratbro is offline ):');
-            return message.channel.stopTyping();
-          }
-        } catch (error) {
-          await message.reply("my best friend ratbro isn't in this server :(");
-          return message.channel.stopTyping();
-        }
-        const aiRatRes = await talkToRatbro(message, INFERKIT_KEY);
-        await message.channel.send(aiRatRes, { reply: ratbro });
-      } catch (error) {
-        console.error(error);
-        await message.reply('i broke :(');
-      } finally {
-        return message.channel.stopTyping();
-      }
-    }
+    // if (message.content.toLowerCase().includes('talk to ratbro')) {
+    //   message.channel.stopTyping();
+    //   try {
+    //     let ratbro;
+    //     try {
+    //       ratbro = await message.guild.members.fetch('720598812665839617');
+    //       if (ratbro.presence.status !== 'online') {
+    //         await message.reply('my best friend ratbro is offline ):');
+    //         return message.channel.stopTyping();
+    //       }
+    //     } catch (error) {
+    //       await message.reply("my best friend ratbro isn't in this server :(");
+    //       return message.channel.stopTyping();
+    //     }
+    //     const aiRatRes = await talkToRatbro(message, INFERKIT_KEY);
+    //     await message.channel.send(aiRatRes, { reply: ratbro });
+    //   } catch (error) {
+    //     console.error(error);
+    //     await message.reply('i broke :(');
+    //   } finally {
+    //     return message.channel.stopTyping();
+    //   }
+    // }
 
     if (
       message.content.toLowerCase().includes('who are you') ||
@@ -75,18 +74,11 @@ client.on('message', async message => {
       return message.channel.stopTyping();
     }
 
-    if (message.content.toLowerCase().split(' ').length <= 1) {
-      const mark = await markov(message);
-      message.content = mark;
-    }
-
     try {
       const aiRes = await aiRequest(message, INFERKIT_KEY);
       await message.reply(aiRes);
     } catch (error) {
-      // react.execute(message, [message.id, 'ibroke']);
-      const mark = await markov(message);
-      await message.reply(`[AI failed]: ${mark}`);
+      await message.reply(`My brain broke :(`);
     } finally {
       return message.channel.stopTyping();
     }
