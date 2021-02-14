@@ -9,7 +9,6 @@ export default async function aiRequest(message, INFERKIT_API_KEY) {
 
   const INFERKIT_URL = 'https://api.inferkit.com/v1/models/standard/generate';
   const channelLog = await fetchMessages(message.channel);
-  console.log(channelLog);
   const conversationStructure = `${channelLog}
 bloardman:`;
 

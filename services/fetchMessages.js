@@ -9,7 +9,6 @@ export default async function fetchMessages(channel) {
     .map(msg => {
       if (msg.content.length) {
         const content = msg.content.replace(new RegExp('<.*?>', 'g'), '');
-        console.log(content);
         return `${msg.author.username}: ${content}`;
       }
     })
