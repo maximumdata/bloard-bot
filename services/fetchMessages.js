@@ -3,7 +3,7 @@ export default async function fetchMessages(channel) {
     return [];
   }
 
-  const messages = await channel.messages.fetch({ limit: 5 });
+  const messages = await channel.messages.fetch({ limit: 8 });
 
   const compiledMessages = messages
     .map(msg => {
