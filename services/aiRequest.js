@@ -4,11 +4,13 @@ import fetchMessages from './fetchMessages';
 
 axiosRetry(axios, { retryDelay: axiosRetry.exponentialDelay });
 
-export default async function aiRequest(message, INFERKIT_API_KEY) {
+export default async function aiRequest(message, INFERKIT_API_KEY, ratbro) {
   if (message.author.username === 'bloardman') return;
 
   const INFERKIT_URL = 'https://api.inferkit.com/v1/models/standard/generate';
-  const channelLog = await fetchMessages(message.channel);
+  const channelLog = ratbro
+    ? `ratbro: ${message.content}`
+    : await fetchMessages(message.channel);
   const conversationStructure = `${channelLog}
 bloardman:`;
 

@@ -1,4 +1,3 @@
-import discord from 'discord.js';
 import aiRequest from './aiRequest';
 
 export default async function talkToRatbro(message, INFERKIT_KEY) {
@@ -22,7 +21,8 @@ export default async function talkToRatbro(message, INFERKIT_KEY) {
       displayName: 'ratbro'
     }
   };
+  // console.log(ratReply.first());
   message.channel.startTyping();
-  const aiReply = await aiRequest(newMessage, INFERKIT_KEY);
+  const aiReply = await aiRequest(newMessage, INFERKIT_KEY, true);
   return aiReply;
 }
