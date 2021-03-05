@@ -18,7 +18,7 @@ bloardman:`;
     prompt: {
       text: conversationStructure
     },
-    length: 200,
+    length: 500,
     startFromBeginning: true,
     topP: 0.5
   };
