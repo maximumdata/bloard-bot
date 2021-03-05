@@ -20,7 +20,7 @@ bloardman:`;
     },
     length: 500,
     startFromBeginning: true,
-    topP: 0.5
+    topP: 0.8
   };
 
   const {
