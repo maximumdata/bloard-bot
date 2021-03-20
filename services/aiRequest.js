@@ -33,7 +33,7 @@ bloardman:`;
   const filtered = resultArray.filter(str => str.length);
   const replyString = filtered[0].trim();
 
-  if (replyString.length <= 1) {
+  if (replyString.length <= 1 || replyString.includes('nigger') || replyString.includes('nigga')) {
     return await aiRequest(message, INFERKIT_API_KEY);
   }
 
