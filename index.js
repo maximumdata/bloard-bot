@@ -7,6 +7,7 @@ import doAKickflip from './services/doAKickflip';
 import whoAreYou from './services/whoAreYou';
 import aiRequest from './services/aiRequest';
 import react from './commands/react';
+import defineAI from './services/defineAI';
 
 // init and environment setup
 dotenv.config();
@@ -72,6 +73,17 @@ client.on('message', async message => {
     if (message.content.toLowerCase().includes('do a kickflip')) {
       await doAKickflip(message);
       return message.channel.stopTyping();
+    }
+
+    if (message.content.toLowerCase().includes('bloardman define')) {
+      try {
+        const definition = await defineAI(message, INFERKIT_KEY);
+        await message.reply(definition);
+      } catch (error) {
+        await message.reply(`My brain broke :(`);
+      } finally {
+        return message.channel.stopTyping();
+      }
     }
 
     try {
