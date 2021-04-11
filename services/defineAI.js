@@ -6,7 +6,7 @@ axiosRetry(axios, { retryDelay: axiosRetry.exponentialDelay });
 export default async function defineAI(message, INFERKIT_API_KEY) {
     if (message.author.username === 'bloardman') return;
     const INFERKIT_URL = 'https://api.inferkit.com/v1/models/standard/generate';
-    const phrase = message.content.split('bloardman define')[1].trim().replace(/^"|"$/g, '').trim();
+    const phrase = message.content.toLowerCase().split('bloardman define')[1].trim().replace(/^"|"$/g, '').trim();
     if (phrase) {
         const filledTemplate = `Webster's dictionary defines "${phrase}" as: `
         const data = {
