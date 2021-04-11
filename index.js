@@ -63,8 +63,7 @@ client.on('message', async message => {
     }
 
     if (
-      message.content.toLowerCase().includes('who are you') ||
-      message.content.toLowerCase().includes('what do you look like')
+      message.content.toLowerCase().includes('bloardman what do you look like')
     ) {
       await whoAreYou(message);
       return message.channel.stopTyping();
