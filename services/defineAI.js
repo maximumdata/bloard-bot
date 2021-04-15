@@ -10,6 +10,7 @@ export default async function defineAI(message, INFERKIT_API_KEY) {
             prompt: {
                 text: filledTemplate
             },
+            length: 750,
             startFromBeginning: true,
             topP: 0.9
         };
