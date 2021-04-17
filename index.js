@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import mongoose from 'mongoose';
 import discord from 'discord.js';
 import checkCooldown from './services/checkCooldown';
 import setUpCommands from './services/setUpCommands';
@@ -15,13 +16,20 @@ process.on('unhandledRejection', error =>
   console.error('Uncaught Promise Rejection', error)
 );
 
-const { TOKEN, MSG_PREFIX, INFERKIT_KEY } = process.env;
+const { MONGO_PW, TOKEN, MSG_PREFIX, INFERKIT_KEY } = process.env;
 const client = new discord.Client();
 const cooldowns = new discord.Collection();
+const db = mongoose.connection;
 
 client.once('ready', async () => {
+  mongoose.connect(`mongodb+srv://mike:${MONGO_PW}@cluster0.42wfm.mongodb.net/bloardman?retryWrites=true&w=majority`, {useNewUrlParser: true, useUnifiedTopology: true});
   console.info(`logged in as ${client.user.tag}`);
   client.commands = await setUpCommands();
+});
+
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log('connected to the db :)')
 });
 
 client.on('message', async message => {
