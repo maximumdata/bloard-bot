@@ -1,5 +1,8 @@
 import axios from 'axios';
+import axiosRetry from 'axios-retry';
 import fetchMessages from './fetchMessages';
+ 
+axiosRetry(axios, { retries: 3 });
 
 export default async function aiRequest(message, INFERKIT_API_KEY, ratbro) {
   if (message.author.username === 'bloardman') return;
