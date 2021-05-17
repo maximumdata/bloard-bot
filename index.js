@@ -87,6 +87,7 @@ client.on('message', async message => {
         const definition = await defineAI(message, INFERKIT_KEY);
         await message.reply(definition);
       } catch (error) {
+        console.error(error);
         await message.reply(`My brain broke :(`);
       } finally {
         return message.channel.stopTyping();
@@ -97,6 +98,7 @@ client.on('message', async message => {
       const aiRes = await aiRequest(message, INFERKIT_KEY);
       await message.reply(aiRes);
     } catch (error) {
+      console.error(error);
       await message.reply(`My brain broke :(`);
     } finally {
       return message.channel.stopTyping();
