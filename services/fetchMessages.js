@@ -12,7 +12,7 @@ export default async function fetchMessages(channel) {
         return `${msg.author.username}: ${content}`;
       }
     })
-    .filter(msg => msg.length)
+    .filter(msg => msg && msg.length)
     .reverse();
 
   return compiledMessages.join('\n');
