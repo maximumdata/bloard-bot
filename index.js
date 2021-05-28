@@ -49,7 +49,7 @@ client.on('message', async message => {
       !message.content.toLowerCase().includes('!post'))
   ) {
     message.channel.startTyping();
-    if (message.content.toLowerCase().includes('how much pain are you in?')) {
+    if (message.content.toLowerCase().includes('pain')) {
       await message.reply(`i'm at ${[pain]}/100 pain`);
     }
     if (message.content.toLowerCase().includes('talk to ratbro')) {
