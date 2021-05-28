@@ -21,6 +21,8 @@ const client = new discord.Client();
 const cooldowns = new discord.Collection();
 const db = mongoose.connection;
 
+let pain = 0;
+
 client.once('ready', async () => {
   mongoose.connect(`mongodb+srv://mike:${MONGO_PW}@cluster0.42wfm.mongodb.net/bloardman?retryWrites=true&w=majority`, {useNewUrlParser: true, useUnifiedTopology: true});
   console.info(`logged in as ${client.user.tag}`);
@@ -39,13 +41,17 @@ client.on('message', async message => {
 
   if (message.author.username === 'bloardman') return;
 
+  pain = Math.floor(Math.random() * 101);
+
   if (
     message.mentions.has(client.user) ||
     (message.content.toLowerCase().includes('bloardman') &&
       !message.content.toLowerCase().includes('!post'))
   ) {
     message.channel.startTyping();
-
+    if (message.content.toLowerCase().includes('how much pain are you in?')) {
+      await message.reply(`i'm at ${[pain]}/100 pain`);
+    }
     if (message.content.toLowerCase().includes('talk to ratbro')) {
       message.channel.stopTyping();
       try {
