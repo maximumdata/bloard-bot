@@ -46,7 +46,8 @@ client.on('message', async message => {
   if (
     message.mentions.has(client.user) ||
     (message.content.toLowerCase().includes('bloardman') &&
-      !message.content.toLowerCase().includes('!post'))
+      !message.content.toLowerCase().includes('!post') &&
+      !message.content.toLowerCase().includes('!nickname'))
   ) {
     message.channel.startTyping();
     if (message.content.toLowerCase().includes('how much pain are you in?')) {
