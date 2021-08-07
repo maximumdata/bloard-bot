@@ -135,7 +135,7 @@ client.on('message', async message => {
   if (checkCooldown(cooldowns, command, message)) return;
 
   try {
-    await command.execute(message, args);
+    await command.execute(message, args, INFERKIT_KEY);
   } catch (e) {
     console.error(e);
     await message.reply(
