@@ -1,8 +1,8 @@
 import axios from 'axios';
-import mongoose from 'mongoose';
+//import mongoose from 'mongoose';
 import axiosRetry from 'axios-retry';
 
-const Definition = mongoose.model('Definition', { phrase: String, definition: String });
+//const Definition = mongoose.model('Definition', { phrase: String, definition: String });
  
 axiosRetry(axios, { retries: 3 });
 
@@ -36,8 +36,8 @@ export default async function defineAI(message, INFERKIT_API_KEY) {
                 return await aiRequest(message, INFERKIT_API_KEY);
             }
     
-            const def = new Definition({phrase, definition: replyString});
-            await def.save();
+            // const def = new Definition({phrase, definition: replyString});
+            // await def.save();
     
             return `Bloardman's dictionary defines "${phrase}" as: ${replyString}`;
         } else {
