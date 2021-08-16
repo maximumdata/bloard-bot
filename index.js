@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import mongoose from 'mongoose';
+//import mongoose from 'mongoose';
 import discord from 'discord.js';
 import checkCooldown from './services/checkCooldown';
 import setUpCommands from './services/setUpCommands';
