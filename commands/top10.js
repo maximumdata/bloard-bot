@@ -14,7 +14,8 @@ export default {
         const listName = args.join(' ');
         const input = `Here is Bloardman's top 10 list of ${listName}:
 10.)`;
-        const output = await aiRaw(message, process.env.INFERKIT_KEY, input);
+        const result = await aiRaw(message, process.env.INFERKIT_KEY, input);
+        const output = `${input}${result}`;
         await message.reply(output);
       } catch (error) {
         throw error;
