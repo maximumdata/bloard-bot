@@ -11,14 +11,17 @@ export default {
   execute: async function (message, args) {
     if (args.length) {
       try {
+        message.channel.startTyping();
         const listName = args.join(' ');
         const input = `Here is Bloardman's top 10 list of ${listName}:
 10.)`;
         const result = await aiRaw(message, process.env.INFERKIT_KEY, input);
-        const output = `${input}${result}`;
+        const output = `${input} ${result.trim()}`;
         await message.reply(output);
       } catch (error) {
         throw error;
+      } finally {
+        return message.channel.stopTyping();
       }
 
     }
