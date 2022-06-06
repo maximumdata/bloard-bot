@@ -3,7 +3,7 @@ import axiosRetry from 'axios-retry';
 
 axiosRetry(axios, { retries: 3 });
 
-export default async function aiRaw(message, INFERKIT_API_KEY, rawInput) {
+export default async function aiRaw(message, INFERKIT_API_KEY, rawInput, length) {
   if (message.author.username === 'bloardman') return;
 
   const INFERKIT_URL = 'https://api.inferkit.com/v1/models/standard/generate';
@@ -11,7 +11,7 @@ export default async function aiRaw(message, INFERKIT_API_KEY, rawInput) {
     prompt: {
       text: rawInput
     },
-    length: 500,
+    length,
     startFromBeginning: true,
     topP: 0.9
   };
