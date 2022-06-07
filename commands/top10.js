@@ -20,7 +20,7 @@ export default {
         const input = `
 Here is Bloardman's short top 3 list of ${listName}:
 3.)`;
-        const result = await aiRaw(message, process.env.INFERKIT_KEY, input, 200);
+        const result = await aiRaw(message, process.env.INFERKIT_KEY, input, 1000);
 
         const output = `Here is Bloardman's top 3 list of ${listName}:
 3.) ${result.trim()}`;
