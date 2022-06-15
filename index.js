@@ -39,7 +39,7 @@ client.on('message', async message => {
     react.execute(message, [message.id, 'nobra']);
   }
 
-  if (message.author.username === 'bloardman' || message.author.username.toLowerCase() === 'lube enthusiast') return;
+  if (message.author.username === 'bloardman') return;// || message.author.username.toLowerCase() === 'lube enthusiast') return;
 
   pain = Math.floor(Math.random() * 101);
 
