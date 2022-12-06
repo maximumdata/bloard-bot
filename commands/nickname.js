@@ -8,8 +8,8 @@ export default {
   execute: async function (message, args, INFERKIT_KEY) {
     if (args.length) {
       const name = args.join(' ');
-      const msg = await aiRequest(message, INFERKIT_KEY, false, true, `My name is ${name}, and i love to`);
       message.channel.startTyping();
+      const msg = await aiRequest(message, INFERKIT_KEY, false, true, `My name is ${name}, and i love to`);
       await message.guild.me.setNickname(name);
       await message.reply(msg)
       message.channel.stopTyping();
