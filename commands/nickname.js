@@ -9,7 +9,7 @@ export default {
     if (args.length) {
       const name = args.join(' ');
       const msg = await aiRequest(message, INFERKIT_KEY, false, true, `My name is ${name}, and i love to`);
-      await message.channel.startTyping();
+      message.channel.startTyping();
       await message.guild.me.setNickname(name);
       await message.reply(msg)
       message.channel.stopTyping();
