@@ -40,10 +40,10 @@ client.on('message', async message => {
   }
 
   if (message.content.toUpperCase().includes(':D')) {
-    await message.react('1053744721303969884');
+    await message.react(':bmansmile:1047610118805671976')
   }
 
-  if (message.author.username === 'bloardman') return;// || message.author.username.toLowerCase() === 'lube enthusiast') return;
+  if (message.author.username === 'bloardman') return;
 
   pain = Math.floor(Math.random() * 101);
 
