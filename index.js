@@ -36,7 +36,11 @@ client.once('ready', async () => {
 
 client.on('message', async message => {
   if (message.content.toLowerCase().includes('nobra')) {
-    react.execute(message, [message.id, 'nobra']);
+    await react.execute(message, [message.id, 'nobra']);
+  }
+
+  if (message.content.toUpperCase().includes(':D')) {
+    await message.react('1053744721303969884');
   }
 
   if (message.author.username === 'bloardman') return;// || message.author.username.toLowerCase() === 'lube enthusiast') return;
