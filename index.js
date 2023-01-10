@@ -12,11 +12,11 @@ import defineAI from './services/defineAI';
 
 // init and environment setup
 dotenv.config();
-process.on('unhandledRejection', error =>
+process.on('unhandledRejection', (error) =>
   console.error('Uncaught Promise Rejection', error)
 );
 
-const { MONGO_PW, TOKEN, MSG_PREFIX, INFERKIT_KEY } = process.env;
+const { TOKEN, MSG_PREFIX, INFERKIT_KEY } = process.env;
 const client = new discord.Client();
 const cooldowns = new discord.Collection();
 // const db = mongoose.connection;
@@ -34,13 +34,13 @@ client.once('ready', async () => {
 //   console.log('connected to the db :)')
 // });
 
-client.on('message', async message => {
+client.on('message', async (message) => {
   if (message.content.toLowerCase().includes('nobra')) {
     await react.execute(message, [message.id, 'nobra']);
   }
 
   if (message.content.toUpperCase().includes(':D')) {
-    await message.react(':bmansmile:1047610118805671976')
+    await message.react(':bmansmile:1047610118805671976');
   }
 
   if (message.author.username === 'bloardman') return;
@@ -124,7 +124,7 @@ client.on('message', async message => {
   const command =
     client.commands.get(commandName) ||
     client.commands.find(
-      cmd => cmd.aliases && cmd.aliases.includes(commandName)
+      (cmd) => cmd.aliases && cmd.aliases.includes(commandName)
     );
 
   if (!command) return;
