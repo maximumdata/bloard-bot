@@ -4,7 +4,6 @@ import discord from 'discord.js';
 import checkCooldown from './services/checkCooldown';
 import setUpCommands from './services/setUpCommands';
 import talkToRatbro from './services/talkToRatbro';
-import doAKickflip from './services/doAKickflip';
 import whoAreYou from './services/whoAreYou';
 import aiRequest from './services/aiRequest';
 import react from './commands/react';
@@ -87,11 +86,6 @@ client.on('message', async (message) => {
       message.content.toLowerCase().includes('bloardman what do you look like')
     ) {
       await whoAreYou(message);
-      return message.channel.stopTyping();
-    }
-
-    if (message.content.toLowerCase().includes('do a kickflip')) {
-      await doAKickflip(message);
       return message.channel.stopTyping();
     }
 
