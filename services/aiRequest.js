@@ -29,6 +29,7 @@ bloardman:`;
       text: conversationStructure,
     },
     length: 1000,
+    startFromBeginning: true,
   };
 
   const {
@@ -63,7 +64,7 @@ bloardman:`;
       testString.includes('rape') ||
       testString.includes('rapist')
     ) {
-      testString = ' gay';
+      testString = ' be gay';
     }
     return `${clearMsg}${testString}`;
   }
