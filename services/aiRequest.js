@@ -29,8 +29,8 @@ bloardman:`;
       text: conversationStructure,
     },
     length: 1000,
-    startFromBeginning: true,
-    topP: 0.9,
+    startFromBeginning: false,
+    topP: 0.9
   };
 
   const {
