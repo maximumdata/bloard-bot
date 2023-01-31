@@ -30,7 +30,8 @@ bloardman:`;
     },
     length: 1000,
     startFromBeginning: false,
-    topP: 0.9
+    topP: 0.85,
+    temperature: 1.1
   };
 
   const {
