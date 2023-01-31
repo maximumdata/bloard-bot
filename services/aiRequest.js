@@ -31,7 +31,7 @@ bloardman:`;
     length: 1000,
     startFromBeginning: false,
     topP: 0.85,
-    temperature: 1.1
+    temperature: 1.01
   };
 
   const {
