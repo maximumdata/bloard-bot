@@ -1,6 +1,6 @@
 {
   "name": "bloard-bot",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "description": "A discord bot for bloard chat",
   "main": "index.js",
   "scripts": {
@@ -22,21 +22,15 @@
     "url": "https://github.com/maximumdata/bloard-bot/issues"
   },
   "homepage": "https://github.com/maximumdata/bloard-bot#readme",
-  "dependencies": {
-    "axios": "^0.21.1",
-    "axios-retry": "^3.1.9",
-    "discord.js": "^12.2.0",
-    "dotenv": "^8.2.0",
-    "gif-encoder-2": "^1.0.5",
-    "markov-generator": "^1.2.3",
-    "mongoose": "^5.12.4",
-    "puppeteer": "^5.2.1"
-  },
   "devDependencies": {
-    "@babel/core": "^7.10.3",
-    "@babel/node": "^7.10.3",
-    "@babel/preset-env": "^7.10.3",
-    "nodemon": "^2.0.4",
-    "prettier": "^2.8.2"
+    "@babel/core": "^7.20.12",
+    "@babel/node": "^7.20.7",
+    "@babel/preset-env": "^7.20.2",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.3"
+  },
+  "dependencies": {
+    "discord.js": "^14.7.1",
+    "dotenv": "^16.0.3"
   }
 }
