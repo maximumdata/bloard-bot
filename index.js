@@ -1,4 +1,4 @@
-import dotenv from 'dotenv';
+// dotenv setup
+import * as dotenv from 'dotenv';
 dotenv.config();
 
-console.log(process.env);
